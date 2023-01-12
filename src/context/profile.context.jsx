@@ -1,4 +1,4 @@
-import React , { createContext, useContext, useEffect, useRef, useState } from "react";
+import React , { createContext, useContext, useEffect, useState } from "react";
 import { auth, database } from "../misc/firebase";
 
 
@@ -26,7 +26,7 @@ export const ProfileProvider = ({children}) => {
             else{
                 if(userRef)
                 {
-                    useRef.off()  // for sign-off, unsubscribing from this user reference
+                    userRef.off()  // for sign-off, unsubscribing from this user reference
                 }
                 setProfile(null);
                 setIsLoading(false);
