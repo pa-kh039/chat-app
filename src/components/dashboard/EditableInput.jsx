@@ -27,6 +27,7 @@ const EditableInput = ({initialValue, onSave , label =null, placeholder="write y
         {
             await onSave(trimmed);
         }
+        setisEditable(false);
     };
 
   return (
@@ -38,13 +39,13 @@ const EditableInput = ({initialValue, onSave , label =null, placeholder="write y
             <Icon icon={isEditable?'close':'edit2'}/>
         </InputGroupButton>
         {isEditable && 
-        <InputGroupButton onClick={onSaveClick}>
+        (<InputGroupButton onClick={onSaveClick}>
             <Icon icon="check"/>
-        </InputGroupButton>
+        </InputGroupButton>)
         }
         </InputGroup>
     </div>
   )
 }
 
-export default EditableInput
+export default EditableInput;

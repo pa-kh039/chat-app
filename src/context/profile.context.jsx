@@ -12,7 +12,7 @@ export const ProfileProvider = ({children}) => {
         // with onAuthStateChanged we can subscribe to the currently signed in user
         let userRef;
         const authUnsub = auth.onAuthStateChanged(authObj => {
-            if(authObj)
+            if(authObj) // if user is signed in 
             {
                 userRef = database.ref(`/profiles/${authObj.uid}`);
                 userRef.on('value', (snap)=>{
@@ -32,7 +32,12 @@ export const ProfileProvider = ({children}) => {
                 setIsLoading(false);
             }
         });
-        return () => authUnsub();
+        return () => {
+            authUnsub();
+            if (userRef) {
+                userRef.off();
+              }
+        };
     },[]);
     // eslint-disable-next-line
     return <ProfileContext.Provider value={{isLoading,profile}}>
