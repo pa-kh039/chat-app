@@ -19,7 +19,7 @@ const DashboardToggle = () => {
   return (
     <div>
         <Button block color="blue" onClick={open}>
-            <Icon icon="dashboard">dashboard</Icon>
+            <Icon icon="dashboard">&nbsp;&nbsp;Dashboard</Icon>
         </Button>
         <Drawer full={isMobile} show={isOpen} onHide={close} placement="left">
             <Dashboard onSignOut={onSignOut}/>
