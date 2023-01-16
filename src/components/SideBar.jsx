@@ -18,15 +18,15 @@ const SideBar = () => {
   },[topSidebarRef]);
 
   return (
-    <div ref={topSidebarRef} className='h-100 pt-2'>
-        <div>
+    <div  className='h-100 pt-2'>
+        <div ref={topSidebarRef}>
             <DashboardToggle/>
             <CreateRoomBtnModal/>
-            <Divider>Join conversation</Divider>
+            <Divider style={{ margin: 0, padding: '30px 0' }}>Join conversation</Divider>
         </div>
         <ChatRoomList aboveElHeight={height}/>
     </div>
-  )
+  );
 }
 
-export default SideBar
+export default SideBar;
