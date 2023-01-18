@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from 'react'
 import { Alert, Button, ControlLabel, Form, FormControl, FormGroup, Icon, Modal, Schema } from 'rsuite';
 import firebase from 'firebase/app';
 import { useModalState } from '../misc/custom-hooks';
-import { database } from '../misc/firebase';
+import { auth, database } from '../misc/firebase';
 
 const {StringType} = Schema.Types;  // schema is for form validation
 const model = Schema.Model({
@@ -38,7 +38,10 @@ const onSubmit = async ()=>{
   setIsLoading(true);
   const newRoomdata = {
     ...formValue,
-    createdAt: firebase.database.ServerValue.TIMESTAMP
+    createdAt: firebase.database.ServerValue.TIMESTAMP,
+    admins:{
+      [auth.currentUser.uid]:true,
+    }
   };
   try {
     

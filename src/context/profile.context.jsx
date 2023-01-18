@@ -26,6 +26,7 @@ export const ProfileProvider = ({children}) => {
         const authUnsub = auth.onAuthStateChanged(authObj => {
             if(authObj) // if user is signed in 
             {
+                // console.log(authObj.uid);
                 userStatusRef = database.ref(`/status/${authObj.uid}`);
                 userRef = database.ref(`/profiles/${authObj.uid}`);
                 userRef.on('value', (snap)=>{
