@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { Alert, Icon, Input, InputGroup } from 'rsuite'
 import InputGroupButton from 'rsuite/lib/InputGroup/InputGroupButton';
 // eslint-disable-next-line
-const EditableInput = ({initialValue, onSave , label =null, placeholder="write your value", emptyMsg="Input is empty",...inputProps}) => {
+const EditableInput = ({initialValue, onSave , label =null, placeholder="write your value", emptyMsg="Input is empty",wrapperClassName="",...inputProps}) => {
 
     const [input, setInput]=useState(initialValue);
     const [isEditable, setisEditable] = useState(false);
@@ -31,7 +31,7 @@ const EditableInput = ({initialValue, onSave , label =null, placeholder="write y
     };
 
   return (
-    <div>
+    <div className={wrapperClassName}>
         {label}
         <InputGroup>
         <Input {...inputProps} disabled={!isEditable} placeholder={placeholder} value={input} onChange={onInputChange}/>
