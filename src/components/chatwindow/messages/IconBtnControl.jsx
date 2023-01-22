@@ -12,7 +12,7 @@ const IconBtnControl = ({isVisible,iconName,toolTip,onClick,badgeContent, ...pro
             <Whisper placement='top' delay={0} delayHide={0} delayShow={0} trigger="hover" speaker={<Tooltip>{toolTip}</Tooltip>}>
                 <IconButton
                 {...props}
-                onClick={onclick}
+                onClick={onClick}
                 circle 
                 size="xs"
                 icon={<Icon icon={iconName}/>}

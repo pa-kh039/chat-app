@@ -8,7 +8,7 @@ import { database } from '../../../misc/firebase';
 
 function assembleMessage(profile,chatId)
 {
-  return {roomId:chatId,author:{name:profile.name,uid:profile.uid, createdAt: profile.createdAt,...(profile.avatar?{avatar : profile.avatar}:{})},createdAt:firebase.database.ServerValue.TIMESTAMP}
+  return {roomId:chatId,author:{name:profile.name,uid:profile.uid, createdAt: profile.createdAt,...(profile.avatar?{avatar : profile.avatar}:{})},createdAt:firebase.database.ServerValue.TIMESTAMP,likeCount:0}
 }
 
 const Bottom = () => {
