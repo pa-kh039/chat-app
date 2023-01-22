@@ -9,7 +9,7 @@ import PresenceDot from '../../PresenceDot';
 import IconBtnControl from './IconBtnControl';
 import ProfileInfoBtnModal from './ProfileInfoBtnModal';
 
-const MessageItem = ({message,handleAdmin, handleLike}) => {
+const MessageItem = ({message,handleAdmin, handleLike,handleDelete}) => {
     const {author, createdAt, text,likes,likeCount}=message;
 
     const [selfRef , isHovered] =  useHover();
@@ -43,6 +43,9 @@ const isLiked= likes && Object.keys(likes).includes(auth.currentUser.uid);
             onClick={()=>handleLike(message.id)}
             badgeContent={likeCount}
             />
+            {isAuthor && <IconBtnControl isVisible={canShowIcons} iconName="close" toolTip="Delete this message"
+            onClick={()=>handleDelete(message.id)}
+            />}
         </div>
         <div>
             <span className='word-break-all'>{text}</span>
