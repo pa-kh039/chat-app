@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import { useProfile } from '../../../context/profile.context';
 import { database } from '../../../misc/firebase';
 import AttachmentBtnModal from './AttachmentBtnModal';
+import AudioMsgBtn from './AudioMsgBtn';
 
 
 function assembleMessage(profile,chatId)
@@ -77,6 +78,7 @@ const afterUpload = useCallback(async(files)=>{
   return (
     <div>
       <InputGroup>
+      <AudioMsgBtn afterUpload={afterUpload}/>
       <AttachmentBtnModal afterUpload={afterUpload}/>
         <Input placeholder="Write your message here..." value={input} onChange={onInputChange} onKeyDown={onKeyDown}/>
           <InputGroup.Button color="blue" appearance='primary' onClick={onSendClick} disabled={isLoading}>

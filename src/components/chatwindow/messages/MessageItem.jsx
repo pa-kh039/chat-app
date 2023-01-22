@@ -17,6 +17,16 @@ const renderFileMessage = (file)=>{
       <ImgBtnModal src={file.url} fileName={file.name} />
     </div>
   }
+
+  if(file.contentType.includes('audio'))
+  {
+    // eslint-disable-next-line
+    return <audio controls>
+      <source src={file.url} type="audio/mp3"/>
+      Your browser does not support audio element
+    </audio>
+  }
+
   return <a href={file.url}>Download {file.name}</a>
 }
 
@@ -55,7 +65,7 @@ const isLiked= likes && Object.keys(likes).includes(auth.currentUser.uid);
             badgeContent={likeCount}
             />
             {isAuthor && <IconBtnControl isVisible={canShowIcons} iconName="close" toolTip="Delete this message"
-            onClick={()=>handleDelete(message.id)}
+            onClick={()=>handleDelete(message.id,file)}
             />}
         </div>
         <div>
